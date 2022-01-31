@@ -1,13 +1,14 @@
 <template>
-  <div id="app"></div>
+  <div id="app"><header-box /></div>
 </template>
 
 <script>
 import axios from "axios";
+import HeaderBox from "./components/HeaderBox.vue";
 
 export default {
   name: "App",
-  components: {},
+  components: { HeaderBox },
   data() {
     return {
       dischi: [],
@@ -23,4 +24,6 @@ export default {
 };
 </script>
 
-<style lang="scss"></style>
+<style lang="scss">
+@import "style/main.scss";
+</style>
