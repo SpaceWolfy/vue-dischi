@@ -1,7 +1,10 @@
 <template>
   <div id="app">
-    <header-box />
-    <main-box :dischi="dischi" />
+    <loading-screen :isLoading="isLoading" />
+    <div v-if="!isLoading">
+      <header-box />
+      <main-box :dischi="dischi" />
+    </div>
   </div>
 </template>
 
@@ -9,13 +12,15 @@
 import axios from "axios";
 import HeaderBox from "./components/HeaderBox.vue";
 import MainBox from "./components/MainBox.vue";
+import LoadingScreen from "./components/LoadingScreen.vue";
 
 export default {
   name: "App",
-  components: { HeaderBox, MainBox },
+  components: { HeaderBox, MainBox, LoadingScreen },
   data() {
     return {
       dischi: [],
+      isLoading: true,
     };
   },
   mounted() {
@@ -24,6 +29,10 @@ export default {
       .then((result) => {
         this.dischi = result.data.response;
       });
+
+    setTimeout(() => {
+      this.isLoading = false;
+    }, 3000);
   },
 };
 </script>
