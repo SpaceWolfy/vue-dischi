@@ -1,9 +1,19 @@
 <template>
-  <div></div>
+  <div class="container"><card-box /></div>
 </template>
 
 <script>
-export default {};
+import CardBox from "./CardBox.vue";
+export default {
+  components: { CardBox },
+};
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.container {
+  width: 1200px;
+  margin: 80px auto;
+  display: flex;
+  flex-wrap: wrap;
+}
+</style>
