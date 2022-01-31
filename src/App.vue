@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <header-box />
-    <main-box />
+    <main-box :dischi="dischi" />
   </div>
 </template>
 
@@ -22,7 +22,7 @@ export default {
     axios
       .get("https://flynn.boolean.careers/exercises/api/array/music")
       .then((result) => {
-        this.dischi = result.data;
+        this.dischi = result.data.response;
       });
   },
 };
