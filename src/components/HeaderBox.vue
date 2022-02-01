@@ -5,13 +5,13 @@
       alt=""
     />
 
-    <select v-model="selected">
+    <select v-model="selected" @click="$emit('input', selected)">
       <option disabled value="">Seleziona un genere</option>
-      <option>Tutti</option>
-      <option>Rock</option>
-      <option>Pop</option>
-      <option>Jazz</option>
-      <option>Metal</option>
+      <option>tutti</option>
+      <option>rock</option>
+      <option>pop</option>
+      <option>jazz</option>
+      <option>metal</option>
     </select>
   </header>
 </template>

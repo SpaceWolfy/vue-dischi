@@ -1,8 +1,8 @@
 <template>
   <div id="app">
-    <header-box />
+    <header-box @input="filterSelect" />
     <loading-screen v-if="!isLoading" />
-    <main-box v-else :dischi="dischi" />
+    <main-box v-else :dischi="filterGenre" />
   </div>
 </template>
 
@@ -19,6 +19,7 @@ export default {
     return {
       dischi: [],
       isLoading: false,
+      filterGenre: [],
     };
   },
   mounted() {
@@ -27,7 +28,19 @@ export default {
       .then((result) => {
         this.dischi = result.data.response;
         this.isLoading = true;
+        this.filterGenre = result.data.response;
       });
+  },
+  methods: {
+    filterSelect(genre) {
+      this.filterGenre = this.dischi.filter((genere) => {
+        if (genre === "tutti") {
+          return (this.filterGenre = this.dischi);
+        } else {
+          return genere.genre.toLowerCase().includes(genre);
+        }
+      });
+    },
   },
 };
 </script>
