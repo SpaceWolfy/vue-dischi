@@ -1,8 +1,8 @@
 <template>
   <div id="app">
-    <header-box @input="filterSelect" />
+    <header-box @input="filterSelect" @inputArtist="filterSelectArtist" />
     <loading-screen v-if="!isLoading" />
-    <main-box v-else :dischi="filterGenre" />
+    <main-box v-else :dischi="filterForCategory" />
   </div>
 </template>
 
@@ -19,7 +19,7 @@ export default {
     return {
       dischi: [],
       isLoading: false,
-      filterGenre: [],
+      filterForCategory: [],
     };
   },
   mounted() {
@@ -28,16 +28,25 @@ export default {
       .then((result) => {
         this.dischi = result.data.response;
         this.isLoading = true;
-        this.filterGenre = result.data.response;
+        this.filterForCategory = result.data.response;
       });
   },
   methods: {
     filterSelect(genre) {
-      this.filterGenre = this.dischi.filter((genere) => {
+      this.filterForCategory = this.dischi.filter((genere) => {
         if (genre === "Tutti") {
-          return (this.filterGenre = this.dischi);
+          return (this.filterForCategory = this.dischi);
         } else {
           return genere.genre.includes(genre);
+        }
+      });
+    },
+    filterSelectArtist(author) {
+      this.filterForCategory = this.dischi.filter((autore) => {
+        if (author === "Tutti") {
+          return (this.filterForCategory = this.dischi);
+        } else {
+          return autore.author.includes(author);
         }
       });
     },
