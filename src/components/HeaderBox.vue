@@ -7,11 +7,11 @@
 
     <select v-model="selected" @click="$emit('input', selected)">
       <option disabled value="">Seleziona un genere</option>
-      <option>tutti</option>
-      <option>rock</option>
-      <option>pop</option>
-      <option>jazz</option>
-      <option>metal</option>
+      <option>Tutti</option>
+      <option>Rock</option>
+      <option>Pop</option>
+      <option>Jazz</option>
+      <option>Metal</option>
     </select>
   </header>
 </template>
@@ -43,10 +43,10 @@ header {
 
   select {
     background-color: #1e2d3b;
-    border: 1px solid #1ed760;
+    border: 2px solid #1ed760;
     padding: 5px;
     color: white;
-    outline-color: #1ed760;
+    outline: none;
     cursor: pointer;
   }
 }

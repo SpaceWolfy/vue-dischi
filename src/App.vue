@@ -34,10 +34,10 @@ export default {
   methods: {
     filterSelect(genre) {
       this.filterGenre = this.dischi.filter((genere) => {
-        if (genre === "tutti") {
+        if (genre === "Tutti") {
           return (this.filterGenre = this.dischi);
         } else {
-          return genere.genre.toLowerCase().includes(genre);
+          return genere.genre.includes(genre);
         }
       });
     },
