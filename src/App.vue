@@ -1,10 +1,8 @@
 <template>
   <div id="app">
-    <loading-screen :isLoading="isLoading" />
-    <div v-if="!isLoading">
-      <header-box />
-      <main-box :dischi="dischi" />
-    </div>
+    <header-box />
+    <loading-screen v-if="!isLoading" />
+    <main-box v-else :dischi="dischi" />
   </div>
 </template>
 
@@ -20,7 +18,7 @@ export default {
   data() {
     return {
       dischi: [],
-      isLoading: true,
+      isLoading: false,
     };
   },
   mounted() {
@@ -28,11 +26,8 @@ export default {
       .get("https://flynn.boolean.careers/exercises/api/array/music")
       .then((result) => {
         this.dischi = result.data.response;
+        this.isLoading = true;
       });
-
-    setTimeout(() => {
-      this.isLoading = false;
-    }, 3000);
   },
 };
 </script>

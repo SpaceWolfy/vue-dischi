@@ -1,36 +1,24 @@
 <template>
-  <div :class="{ loader: true, fadeout: !isLoading }">
-    <div>
-      <div class="lds-dual-ring"></div>
-    </div>
-  </div>
+  <div class="load-cont"><div class="lds-dual-ring"></div></div>
 </template>
 
 <script>
-export default {
-  name: "loading",
-  props: ["isLoading"],
-};
+export default {};
 </script>
 
 <style lang="scss" scoped>
-.loader {
-  background-color: #1e2d3b;
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  top: 0;
-  overflow: hidden;
+.load-cont {
+  height: 100vh;
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
 
   .lds-dual-ring {
     display: inline-block;
     width: 80px;
     height: 80px;
   }
+
   .lds-dual-ring:after {
     content: " ";
     display: block;
@@ -40,8 +28,9 @@ export default {
     border-radius: 50%;
     border: 6px solid #1ed760;
     border-color: #1ed760 transparent #1ed760 transparent;
-    animation: lds-dual-ring 1s linear infinite;
+    animation: lds-dual-ring 1.2s linear infinite;
   }
+
   @keyframes lds-dual-ring {
     0% {
       transform: rotate(0deg);
@@ -49,17 +38,6 @@ export default {
     100% {
       transform: rotate(360deg);
     }
-  }
-}
-
-.fadeout {
-  animation: fadeout 3s forwards;
-}
-
-@keyframes fadeout {
-  to {
-    opacity: 0;
-    visibility: hidden;
   }
 }
 </style>
