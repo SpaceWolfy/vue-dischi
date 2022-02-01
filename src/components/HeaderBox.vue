@@ -5,7 +5,7 @@
       alt=""
     />
     <div>
-      <select v-model="selected" @click="$emit('input', selected)">
+      <select v-model="selected" @change="$emit('input', selected)">
         <option disabled value="">Seleziona un genere</option>
         <option>Tutti</option>
         <option>Rock</option>
@@ -14,7 +14,7 @@
         <option>Metal</option>
       </select>
 
-      <select v-model="author" @click="$emit('inputArtist', author)">
+      <select v-model="author" @change="$emit('inputArtist', author)">
         <option disabled value="">Seleziona un artista</option>
         <option>Tutti</option>
         <option>Bon Jovi</option>
